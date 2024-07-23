@@ -6,6 +6,12 @@ CREATE TABLE wikistat
     `path` String,
     `hits` UInt64
 )
+/*
+MergeTree is the common table engine that saves rows in blocks of 8192 rows based on the primary key (order by).
+
+Unlike SummingMergeTree or ReplacingMergeTree, MergeTree doesn't merge rows with the same primary key.
+Instead it allows rows with the same primary key to exist in storage.
+*/
 ENGINE = MergeTree
 ORDER BY (path, time);
 

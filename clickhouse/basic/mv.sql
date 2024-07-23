@@ -4,7 +4,7 @@ CREATE TABLE wikistat_top_projects
     `project` LowCardinality(String),
     `hits` UInt32
 )
-ENGINE = SummingMergeTree
+ENGINE = SummingMergeTree --- SummingMergeTree is a variant of MergeTree that sums up values with the same primary key.
 ORDER BY (date, project);
 
 CREATE MATERIALIZED VIEW wikistat_top_projects_mv TO wikistat_top_projects AS
