@@ -6,7 +6,7 @@ CREATE TABLE wikistat
     `path` String,
     `hits` UInt64
 )
-ENGINE = ReplacingMergeTree
+ENGINE = MergeTree
 ORDER BY (path, time);
 
 INSERT INTO wikistat SELECT *
