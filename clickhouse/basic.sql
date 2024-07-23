@@ -20,7 +20,7 @@ INSERT INTO wikistat SELECT *
 FROM s3('https://ClickHouse-public-datasets.s3.amazonaws.com/wikistat/partitioned/wikistat*.native.zst') LIMIT 1e9
 
 
---- query_raw
+--- query_raw.
 SELECT
     project,
     sum(hits) AS h
@@ -31,7 +31,7 @@ ORDER BY h DESC
 LIMIT 10
 
 
---- mv
+--- mv. For each project on each date, calculate the sum of hits.
 CREATE TABLE wikistat_top_projects
 (
     `date` Date,
